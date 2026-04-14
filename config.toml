@@ -37,8 +37,8 @@ line-number = "relative" # absolute(绝对行号) / relative(相对行号)
 end-of-line-diagnostics = "hint" # none/hint/info/warning/error
 
 # ==================== 命令行 ====================
-# [#11223] 隐藏底部命令行
-commandline = false
+# [#11223] 不隐藏底部命令行
+commandline = true
 
 # ==================== 括号彩虹 ====================
 # [#13530] 彩色括号配对显示
@@ -100,30 +100,30 @@ skip-levels = 0        # 跳过的缩进级别
 left = [
   "mode",                        # 编辑模式
   "version-control",             # Git 状态
-  "read-only-indicator",         # 只读标识
   "file-name",                   # 文件名
+  "file-type",                   # 文件类型
+  "read-only-indicator",         # 只读标识
   "file-modification-indicator", # 修改状态
 ]
 center = ["diagnostics"]         # 诊断信息
 right = [
   "register",                    # 寄存器
-  "position",                    # 光标位置
   "primary-selection-length",   # 主选区长度
   "selections",                  # 选区数量
-  'word-count',                  # 字数统计
   "file-encoding",               # 文件编码
-  "file-indent-style",           # 缩进风格
   "file-line-ending",            # 行尾符号
+  "file-indent-style",           # 缩进风格
+  "position",                    # 光标位置
   "position-percentage",         # 文件位置百分比
-  "file-type",                   # 文件类型
+  'word-count',                  # 字数统计
   "spacer"                       # 空白分隔
 ]
 # separator = "│"                # 分隔符
 
 # 模式指示符图标
-mode.normal = " "
-mode.insert = " "
-mode.select = " "
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
 
 # 诊断信息过滤
 diagnostics = ["warning", "error"]
@@ -227,9 +227,11 @@ O = ["open_above", ":pipe-to bash ~/.config/helix/scripts/ime-switch 1"]
 # ==================== Space 模式 ====================
 [keys.normal.space]
 "x" = ":buffer-close"     # 关闭当前缓冲区
-"w" = { r = ":reload", c = ":config-reload" }  # 重新加载
+"3" = { r = ":reload", c = ":config-reload" }  # 重新加载
 "." = "file_picker_in_current_buffer_directory" # 当前目录文件选择
 "n" = "signature_help"    # 函数签名帮助
+"w" = ":write"          # 保存
+"backspace" = ":write-quit-all"
 
 # ==================== 外部程序集成 ====================
 [keys.normal.space.o]
