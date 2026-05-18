@@ -6,6 +6,7 @@
 theme = "onedark_local"
 
 [editor]
+insecure = true
 # ==================== 基础显示 ====================
 # 真彩支持 (需终端支持: export COLORTERM=truecolor)
 true-color = true
